@@ -23,22 +23,22 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         TextBox1 = New TextBox()
-        Button1 = New Button()
-        Button2 = New Button()
-        Button3 = New Button()
-        Button4 = New Button()
-        Button5 = New Button()
-        Button6 = New Button()
-        Button7 = New Button()
-        Button8 = New Button()
+        btnClear = New Button()
+        btnDiv = New Button()
+        btnMul = New Button()
+        btnDelete = New Button()
+        btn7 = New Button()
+        btn8 = New Button()
+        btn9 = New Button()
+        btnSub = New Button()
         btn4 = New Button()
         btn5 = New Button()
         btn6 = New Button()
-        Button12 = New Button()
+        btnAdd = New Button()
         btn1 = New Button()
         btn2 = New Button()
         btn3 = New Button()
-        Button16 = New Button()
+        btnEqual = New Button()
         btnSign = New Button()
         btn0 = New Button()
         btnDot = New Button()
@@ -49,80 +49,82 @@ Partial Class Form1
         TextBox1.Font = New Font("Yu Gothic UI", 18F)
         TextBox1.Location = New Point(12, 42)
         TextBox1.Name = "TextBox1"
+        TextBox1.ReadOnly = True
         TextBox1.Size = New Size(326, 39)
         TextBox1.TabIndex = 0
+        TextBox1.TextAlign = HorizontalAlignment.Right
         ' 
-        ' Button1
+        ' btnClear
         ' 
-        Button1.Location = New Point(12, 100)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(69, 50)
-        Button1.TabIndex = 1
-        Button1.Text = "C"
-        Button1.UseVisualStyleBackColor = True
+        btnClear.Location = New Point(12, 100)
+        btnClear.Name = "btnClear"
+        btnClear.Size = New Size(69, 50)
+        btnClear.TabIndex = 1
+        btnClear.Text = "C"
+        btnClear.UseVisualStyleBackColor = True
         ' 
-        ' Button2
+        ' btnDiv
         ' 
-        Button2.Location = New Point(96, 100)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(69, 50)
-        Button2.TabIndex = 2
-        Button2.Text = "/"
-        Button2.UseVisualStyleBackColor = True
+        btnDiv.Location = New Point(96, 100)
+        btnDiv.Name = "btnDiv"
+        btnDiv.Size = New Size(69, 50)
+        btnDiv.TabIndex = 2
+        btnDiv.Text = "/"
+        btnDiv.UseVisualStyleBackColor = True
         ' 
-        ' Button3
+        ' btnMul
         ' 
-        Button3.Location = New Point(184, 100)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(69, 50)
-        Button3.TabIndex = 3
-        Button3.Text = "＊"
-        Button3.UseVisualStyleBackColor = True
+        btnMul.Location = New Point(184, 100)
+        btnMul.Name = "btnMul"
+        btnMul.Size = New Size(69, 50)
+        btnMul.TabIndex = 3
+        btnMul.Text = "＊"
+        btnMul.UseVisualStyleBackColor = True
         ' 
-        ' Button4
+        ' btnDelete
         ' 
-        Button4.Location = New Point(269, 100)
-        Button4.Name = "Button4"
-        Button4.Size = New Size(69, 50)
-        Button4.TabIndex = 4
-        Button4.Text = "delete"
-        Button4.UseVisualStyleBackColor = True
+        btnDelete.Location = New Point(269, 100)
+        btnDelete.Name = "btnDelete"
+        btnDelete.Size = New Size(69, 50)
+        btnDelete.TabIndex = 4
+        btnDelete.Text = "delete"
+        btnDelete.UseVisualStyleBackColor = True
         ' 
-        ' Button5
+        ' btn7
         ' 
-        Button5.Location = New Point(12, 156)
-        Button5.Name = "Button5"
-        Button5.Size = New Size(69, 50)
-        Button5.TabIndex = 5
-        Button5.Text = "7"
-        Button5.UseVisualStyleBackColor = True
+        btn7.Location = New Point(12, 156)
+        btn7.Name = "btn7"
+        btn7.Size = New Size(69, 50)
+        btn7.TabIndex = 5
+        btn7.Text = "7"
+        btn7.UseVisualStyleBackColor = True
         ' 
-        ' Button6
+        ' btn8
         ' 
-        Button6.Location = New Point(96, 156)
-        Button6.Name = "Button6"
-        Button6.Size = New Size(69, 50)
-        Button6.TabIndex = 6
-        Button6.Text = "8"
-        Button6.UseVisualStyleBackColor = True
+        btn8.Location = New Point(96, 156)
+        btn8.Name = "btn8"
+        btn8.Size = New Size(69, 50)
+        btn8.TabIndex = 6
+        btn8.Text = "8"
+        btn8.UseVisualStyleBackColor = True
         ' 
-        ' Button7
+        ' btn9
         ' 
-        Button7.Location = New Point(184, 156)
-        Button7.Name = "Button7"
-        Button7.Size = New Size(69, 50)
-        Button7.TabIndex = 7
-        Button7.Text = "9"
-        Button7.UseVisualStyleBackColor = True
+        btn9.Location = New Point(184, 156)
+        btn9.Name = "btn9"
+        btn9.Size = New Size(69, 50)
+        btn9.TabIndex = 7
+        btn9.Text = "9"
+        btn9.UseVisualStyleBackColor = True
         ' 
-        ' Button8
+        ' btnSub
         ' 
-        Button8.Location = New Point(269, 156)
-        Button8.Name = "Button8"
-        Button8.Size = New Size(69, 50)
-        Button8.TabIndex = 8
-        Button8.Text = "-"
-        Button8.UseVisualStyleBackColor = True
+        btnSub.Location = New Point(269, 156)
+        btnSub.Name = "btnSub"
+        btnSub.Size = New Size(69, 50)
+        btnSub.TabIndex = 8
+        btnSub.Text = "-"
+        btnSub.UseVisualStyleBackColor = True
         ' 
         ' btn4
         ' 
@@ -151,14 +153,14 @@ Partial Class Form1
         btn6.Text = "6"
         btn6.UseVisualStyleBackColor = True
         ' 
-        ' Button12
+        ' btnAdd
         ' 
-        Button12.Location = New Point(269, 212)
-        Button12.Name = "Button12"
-        Button12.Size = New Size(69, 50)
-        Button12.TabIndex = 12
-        Button12.Text = "+"
-        Button12.UseVisualStyleBackColor = True
+        btnAdd.Location = New Point(269, 212)
+        btnAdd.Name = "btnAdd"
+        btnAdd.Size = New Size(69, 50)
+        btnAdd.TabIndex = 12
+        btnAdd.Text = "+"
+        btnAdd.UseVisualStyleBackColor = True
         ' 
         ' btn1
         ' 
@@ -187,14 +189,14 @@ Partial Class Form1
         btn3.Text = "3"
         btn3.UseVisualStyleBackColor = True
         ' 
-        ' Button16
+        ' btnEqual
         ' 
-        Button16.Location = New Point(269, 268)
-        Button16.Name = "Button16"
-        Button16.Size = New Size(69, 106)
-        Button16.TabIndex = 16
-        Button16.Text = "="
-        Button16.UseVisualStyleBackColor = True
+        btnEqual.Location = New Point(269, 268)
+        btnEqual.Name = "btnEqual"
+        btnEqual.Size = New Size(69, 106)
+        btnEqual.TabIndex = 16
+        btnEqual.Text = "="
+        btnEqual.UseVisualStyleBackColor = True
         ' 
         ' btnSign
         ' 
@@ -231,22 +233,22 @@ Partial Class Form1
         Controls.Add(btnDot)
         Controls.Add(btn0)
         Controls.Add(btnSign)
-        Controls.Add(Button16)
+        Controls.Add(btnEqual)
         Controls.Add(btn3)
         Controls.Add(btn2)
         Controls.Add(btn1)
-        Controls.Add(Button12)
+        Controls.Add(btnAdd)
         Controls.Add(btn6)
         Controls.Add(btn5)
         Controls.Add(btn4)
-        Controls.Add(Button8)
-        Controls.Add(Button7)
-        Controls.Add(Button6)
-        Controls.Add(Button5)
-        Controls.Add(Button4)
-        Controls.Add(Button3)
-        Controls.Add(Button2)
-        Controls.Add(Button1)
+        Controls.Add(btnSub)
+        Controls.Add(btn9)
+        Controls.Add(btn8)
+        Controls.Add(btn7)
+        Controls.Add(btnDelete)
+        Controls.Add(btnMul)
+        Controls.Add(btnDiv)
+        Controls.Add(btnClear)
         Controls.Add(TextBox1)
         Name = "Form1"
         Text = "Form1"
@@ -255,22 +257,22 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
+    Friend WithEvents btnClear As Button
+    Friend WithEvents btnDiv As Button
+    Friend WithEvents btnMul As Button
+    Friend WithEvents btnDelete As Button
+    Friend WithEvents btn7 As Button
+    Friend WithEvents btn8 As Button
+    Friend WithEvents btn9 As Button
+    Friend WithEvents btnSub As Button
     Friend WithEvents btn4 As Button
     Friend WithEvents btn5 As Button
     Friend WithEvents btn6 As Button
-    Friend WithEvents Button12 As Button
+    Friend WithEvents btnAdd As Button
     Friend WithEvents btn1 As Button
     Friend WithEvents btn2 As Button
     Friend WithEvents btn3 As Button
-    Friend WithEvents Button16 As Button
+    Friend WithEvents btnEqual As Button
     Friend WithEvents btnSign As Button
     Friend WithEvents btn0 As Button
     Friend WithEvents btnDot As Button
