@@ -22,7 +22,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        TextBox1 = New TextBox()
+        txtDisplay = New TextBox()
         btnClear = New Button()
         btnDiv = New Button()
         btnMul = New Button()
@@ -44,15 +44,15 @@ Partial Class Form1
         btnDot = New Button()
         SuspendLayout()
         ' 
-        ' TextBox1
+        ' txtDisplay
         ' 
-        TextBox1.Font = New Font("Yu Gothic UI", 18F)
-        TextBox1.Location = New Point(12, 42)
-        TextBox1.Name = "TextBox1"
-        TextBox1.ReadOnly = True
-        TextBox1.Size = New Size(326, 39)
-        TextBox1.TabIndex = 0
-        TextBox1.TextAlign = HorizontalAlignment.Right
+        txtDisplay.Font = New Font("Yu Gothic UI", 18F)
+        txtDisplay.Location = New Point(12, 42)
+        txtDisplay.Name = "txtDisplay"
+        txtDisplay.ReadOnly = True
+        txtDisplay.Size = New Size(326, 39)
+        txtDisplay.TabIndex = 0
+        txtDisplay.TextAlign = HorizontalAlignment.Right
         ' 
         ' btnClear
         ' 
@@ -249,14 +249,14 @@ Partial Class Form1
         Controls.Add(btnMul)
         Controls.Add(btnDiv)
         Controls.Add(btnClear)
-        Controls.Add(TextBox1)
+        Controls.Add(txtDisplay)
         Name = "Form1"
         Text = "Form1"
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtDisplay As TextBox
     Friend WithEvents btnClear As Button
     Friend WithEvents btnDiv As Button
     Friend WithEvents btnMul As Button
