@@ -1,9 +1,13 @@
 ﻿Public Class Form1
 
-    ' 現在表示している文字
+    ' 入力表示（文字列で保持）
     Private currentInput As String = "0"
+
+    ' 計算用
     Private firstValue As Double = 0
     Private currentOperator As String = ""
+
+    ' 数字ボタン（0-9）
     Private Sub btnNumber_Click(sender As Object, e As EventArgs) Handles _
         btn0.Click, btn1.Click, btn2.Click, btn3.Click, btn4.Click,
         btn5.Click, btn6.Click, btn7.Click, btn8.Click, btn9.Click
@@ -20,29 +24,55 @@
         txtDisplay.Text = currentInput
     End Sub
 
+    ' クリア
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        currentInput = "0"
+        firstValue = 0
+        currentOperator = ""
+        txtDisplay.Text = currentInput
+    End Sub
+
+    ' 演算子（＋ − × ÷）共通
+    Private Sub btnOperator_Click(sender As Object, e As EventArgs) Handles _
+        btnAdd.Click, btnSub.Click, btnMul.Click, btnDiv.Click
+
+        firstValue = Double.Parse(currentInput)
+
+        Dim btn As Button = CType(sender, Button)
+        currentOperator = btn.Text   ' "+", "-", "×", "÷" のどれか
+
         currentInput = "0"
         txtDisplay.Text = currentInput
     End Sub
 
-    Private Sub btnOperator_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        firstValue = Double.Parse(currentInput)
-        currentOperator = "+"
-        currentInput = "0"
-    End Sub
-
+    ' ＝
     Private Sub btnEqual_Click(sender As Object, e As EventArgs) Handles btnEqual.Click
         Dim secondValue As Double = Double.Parse(currentInput)
-        Dim result As Double = 0
+        Dim result As Double
 
-        If currentOperator = "+" Then
-            result = firstValue + secondValue
-        End If
+        Select Case currentOperator
+            Case "+"
+                result = firstValue + secondValue
+            Case "-"
+                result = firstValue - secondValue
+            Case "×", "*"
+                result = firstValue * secondValue
+            Case "÷", "/"
+                If secondValue = 0 Then
+                    MessageBox.Show("0で割れません")
+                    Return
+                End If
+                result = firstValue / secondValue
+            Case Else
+                ' 演算子未選択なら何もしない（または表示維持）
+                result = secondValue
+        End Select
 
         currentInput = result.ToString()
         txtDisplay.Text = currentInput
 
-        ' 連続計算できるように「結果を次のfirstValueにする」
+        ' 連続計算
         firstValue = result
     End Sub
+
 End Class
