@@ -43,12 +43,13 @@ Partial Class Form1
         btn0 = New Button()
         btnDot = New Button()
         lblExpression = New Label()
+        lstHistory = New ListBox()
         SuspendLayout()
         ' 
         ' txtDisplay
         ' 
         txtDisplay.Font = New Font("Yu Gothic UI", 18F)
-        txtDisplay.Location = New Point(12, 47)
+        txtDisplay.Location = New Point(214, 47)
         txtDisplay.Margin = New Padding(3, 4, 3, 4)
         txtDisplay.Name = "txtDisplay"
         txtDisplay.ReadOnly = True
@@ -58,7 +59,7 @@ Partial Class Form1
         ' 
         ' btnClear
         ' 
-        btnClear.Location = New Point(12, 114)
+        btnClear.Location = New Point(214, 114)
         btnClear.Margin = New Padding(3, 4, 3, 4)
         btnClear.Name = "btnClear"
         btnClear.Size = New Size(69, 56)
@@ -69,7 +70,7 @@ Partial Class Form1
         ' btnDiv
         ' 
         btnDiv.Font = New Font("Yu Gothic UI", 18F)
-        btnDiv.Location = New Point(96, 114)
+        btnDiv.Location = New Point(298, 114)
         btnDiv.Margin = New Padding(3, 4, 3, 4)
         btnDiv.Name = "btnDiv"
         btnDiv.Size = New Size(69, 56)
@@ -80,7 +81,7 @@ Partial Class Form1
         ' btnMul
         ' 
         btnMul.Font = New Font("Yu Gothic UI", 18F)
-        btnMul.Location = New Point(184, 114)
+        btnMul.Location = New Point(386, 114)
         btnMul.Margin = New Padding(3, 4, 3, 4)
         btnMul.Name = "btnMul"
         btnMul.Size = New Size(69, 56)
@@ -90,7 +91,7 @@ Partial Class Form1
         ' 
         ' btnDelete
         ' 
-        btnDelete.Location = New Point(269, 114)
+        btnDelete.Location = New Point(471, 114)
         btnDelete.Margin = New Padding(3, 4, 3, 4)
         btnDelete.Name = "btnDelete"
         btnDelete.Size = New Size(69, 56)
@@ -100,7 +101,7 @@ Partial Class Form1
         ' 
         ' btn7
         ' 
-        btn7.Location = New Point(12, 177)
+        btn7.Location = New Point(214, 177)
         btn7.Margin = New Padding(3, 4, 3, 4)
         btn7.Name = "btn7"
         btn7.Size = New Size(69, 56)
@@ -110,7 +111,7 @@ Partial Class Form1
         ' 
         ' btn8
         ' 
-        btn8.Location = New Point(96, 177)
+        btn8.Location = New Point(298, 177)
         btn8.Margin = New Padding(3, 4, 3, 4)
         btn8.Name = "btn8"
         btn8.Size = New Size(69, 56)
@@ -120,7 +121,7 @@ Partial Class Form1
         ' 
         ' btn9
         ' 
-        btn9.Location = New Point(184, 177)
+        btn9.Location = New Point(386, 177)
         btn9.Margin = New Padding(3, 4, 3, 4)
         btn9.Name = "btn9"
         btn9.Size = New Size(69, 56)
@@ -131,7 +132,7 @@ Partial Class Form1
         ' btnSub
         ' 
         btnSub.Font = New Font("Yu Gothic UI", 18F)
-        btnSub.Location = New Point(269, 177)
+        btnSub.Location = New Point(471, 177)
         btnSub.Margin = New Padding(3, 4, 3, 4)
         btnSub.Name = "btnSub"
         btnSub.Size = New Size(69, 56)
@@ -141,7 +142,7 @@ Partial Class Form1
         ' 
         ' btn4
         ' 
-        btn4.Location = New Point(12, 240)
+        btn4.Location = New Point(214, 240)
         btn4.Margin = New Padding(3, 4, 3, 4)
         btn4.Name = "btn4"
         btn4.Size = New Size(69, 56)
@@ -151,7 +152,7 @@ Partial Class Form1
         ' 
         ' btn5
         ' 
-        btn5.Location = New Point(96, 240)
+        btn5.Location = New Point(298, 240)
         btn5.Margin = New Padding(3, 4, 3, 4)
         btn5.Name = "btn5"
         btn5.Size = New Size(69, 56)
@@ -161,7 +162,7 @@ Partial Class Form1
         ' 
         ' btn6
         ' 
-        btn6.Location = New Point(184, 240)
+        btn6.Location = New Point(386, 240)
         btn6.Margin = New Padding(3, 4, 3, 4)
         btn6.Name = "btn6"
         btn6.Size = New Size(69, 56)
@@ -172,7 +173,7 @@ Partial Class Form1
         ' btnAdd
         ' 
         btnAdd.Font = New Font("Yu Gothic UI", 18F)
-        btnAdd.Location = New Point(269, 240)
+        btnAdd.Location = New Point(471, 240)
         btnAdd.Margin = New Padding(3, 4, 3, 4)
         btnAdd.Name = "btnAdd"
         btnAdd.Size = New Size(69, 56)
@@ -182,7 +183,7 @@ Partial Class Form1
         ' 
         ' btn1
         ' 
-        btn1.Location = New Point(12, 304)
+        btn1.Location = New Point(214, 304)
         btn1.Margin = New Padding(3, 4, 3, 4)
         btn1.Name = "btn1"
         btn1.Size = New Size(69, 56)
@@ -192,7 +193,7 @@ Partial Class Form1
         ' 
         ' btn2
         ' 
-        btn2.Location = New Point(96, 304)
+        btn2.Location = New Point(298, 304)
         btn2.Margin = New Padding(3, 4, 3, 4)
         btn2.Name = "btn2"
         btn2.Size = New Size(69, 56)
@@ -202,7 +203,7 @@ Partial Class Form1
         ' 
         ' btn3
         ' 
-        btn3.Location = New Point(184, 304)
+        btn3.Location = New Point(386, 304)
         btn3.Margin = New Padding(3, 4, 3, 4)
         btn3.Name = "btn3"
         btn3.Size = New Size(69, 56)
@@ -212,7 +213,7 @@ Partial Class Form1
         ' 
         ' btnEqual
         ' 
-        btnEqual.Location = New Point(269, 304)
+        btnEqual.Location = New Point(471, 304)
         btnEqual.Margin = New Padding(3, 4, 3, 4)
         btnEqual.Name = "btnEqual"
         btnEqual.Size = New Size(69, 120)
@@ -222,7 +223,7 @@ Partial Class Form1
         ' 
         ' btnSign
         ' 
-        btnSign.Location = New Point(12, 367)
+        btnSign.Location = New Point(214, 367)
         btnSign.Margin = New Padding(3, 4, 3, 4)
         btnSign.Name = "btnSign"
         btnSign.Size = New Size(69, 56)
@@ -232,7 +233,7 @@ Partial Class Form1
         ' 
         ' btn0
         ' 
-        btn0.Location = New Point(96, 367)
+        btn0.Location = New Point(298, 367)
         btn0.Margin = New Padding(3, 4, 3, 4)
         btn0.Name = "btn0"
         btn0.Size = New Size(69, 56)
@@ -242,27 +243,36 @@ Partial Class Form1
         ' 
         ' btnDot
         ' 
-        btnDot.Location = New Point(184, 367)
+        btnDot.Location = New Point(386, 367)
         btnDot.Margin = New Padding(3, 4, 3, 4)
         btnDot.Name = "btnDot"
         btnDot.Size = New Size(69, 56)
         btnDot.TabIndex = 19
         btnDot.Text = "."
         btnDot.UseVisualStyleBackColor = True
-        '
+        ' 
         ' lblExpression
-        '
-        lblExpression.Location = New Point(12, 24)
+        ' 
+        lblExpression.Location = New Point(214, 24)
         lblExpression.Name = "lblExpression"
         lblExpression.Size = New Size(326, 20)
         lblExpression.TabIndex = 20
         lblExpression.TextAlign = ContentAlignment.MiddleRight
         ' 
+        ' lstHistory
+        ' 
+        lstHistory.FormattingEnabled = True
+        lstHistory.Location = New Point(12, 16)
+        lstHistory.Name = "lstHistory"
+        lstHistory.Size = New Size(179, 412)
+        lstHistory.TabIndex = 21
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(350, 604)
+        ClientSize = New Size(564, 446)
+        Controls.Add(lstHistory)
         Controls.Add(lblExpression)
         Controls.Add(btnDot)
         Controls.Add(btn0)
@@ -313,5 +323,6 @@ Partial Class Form1
     Friend WithEvents btn0 As Button
     Friend WithEvents btnDot As Button
     Friend WithEvents lblExpression As Label
+    Friend WithEvents lstHistory As ListBox
 
 End Class

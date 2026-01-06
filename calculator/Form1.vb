@@ -80,7 +80,11 @@
         txtDisplay.Text = currentInput
 
         ' 計算式を完全な形で表示（例: 5 + 3 =）
+        Dim expression As String = $"{firstValue} {currentOperator} {secondValue} = {result}"
         lblExpression.Text = $"{firstValue} {currentOperator} {secondValue} ="
+
+        ' 履歴に追加（最新が上）
+        lstHistory.Items.Insert(0, expression)
 
         ' 連続計算
         firstValue = result
@@ -151,6 +155,22 @@
         End If
 
         txtDisplay.Text = currentInput
+    End Sub
+
+    ' 履歴から再利用
+    Private Sub lstHistory_Click(sender As Object, e As EventArgs) Handles lstHistory.Click
+        If lstHistory.SelectedItem Is Nothing Then Return
+
+        ' 履歴の形式: "5 + 3 = 8" → 結果(8)を取得
+        Dim historyText As String = lstHistory.SelectedItem.ToString()
+        Dim parts() As String = historyText.Split("="c)
+
+        If parts.Length >= 2 Then
+            Dim resultText As String = parts(1).Trim()
+            currentInput = resultText
+            txtDisplay.Text = currentInput
+            isNewInput = True
+        End If
     End Sub
 
 End Class
