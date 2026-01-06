@@ -59,6 +59,7 @@ Partial Class Form1
         ' 
         ' btnClear
         ' 
+        btnClear.Font = New Font("Yu Gothic UI", 10F)
         btnClear.Location = New Point(214, 114)
         btnClear.Margin = New Padding(3, 4, 3, 4)
         btnClear.Name = "btnClear"
@@ -213,6 +214,7 @@ Partial Class Form1
         ' 
         ' btnEqual
         ' 
+        btnEqual.Font = New Font("Yu Gothic UI", 18F)
         btnEqual.Location = New Point(471, 304)
         btnEqual.Margin = New Padding(3, 4, 3, 4)
         btnEqual.Name = "btnEqual"

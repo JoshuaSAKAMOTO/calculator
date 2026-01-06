@@ -8,6 +8,18 @@
     Private currentOperator As String = ""
     Private isNewInput As Boolean = False
 
+    ' 連続計算用（=を繰り返し押す用）
+    Private lastOperator As String = ""
+    Private lastValue As Double = 0
+
+    ' 桁数制限
+    Private Const MAX_DIGITS As Integer = 10
+
+    ' 桁数をカウント（小数点・マイナス符号を除く）
+    Private Function GetDigitCount(input As String) As Integer
+        Return input.Replace("-", "").Replace(".", "").Length
+    End Function
+
     ' 数字ボタン（0-9）
     Private Sub btnNumber_Click(sender As Object, e As EventArgs) Handles _
     btn0.Click, btn1.Click, btn2.Click, btn3.Click, btn4.Click,
@@ -20,6 +32,8 @@
             currentInput = number
             isNewInput = False
         Else
+            ' 桁数制限チェック
+            If GetDigitCount(currentInput) >= MAX_DIGITS Then Return
             currentInput &= number
         End If
 
@@ -32,6 +46,8 @@
         currentInput = "0"
         firstValue = 0
         currentOperator = ""
+        lastOperator = ""
+        lastValue = 0
         txtDisplay.Text = currentInput
         lblExpression.Text = ""
     End Sub
@@ -55,22 +71,36 @@
 
     ' ＝
     Private Sub btnEqual_Click(sender As Object, e As EventArgs) Handles btnEqual.Click
-        Dim secondValue As Double = Double.Parse(currentInput)
+        Dim secondValue As Double
+        Dim operatorToUse As String
+        Dim firstVal As Double
+
+        ' 演算子が空の場合（=を連続で押した場合）は、保存した演算子と値を使用
+        If currentOperator = "" AndAlso lastOperator <> "" Then
+            operatorToUse = lastOperator
+            secondValue = lastValue
+            firstVal = Double.Parse(currentInput)
+        Else
+            operatorToUse = currentOperator
+            secondValue = Double.Parse(currentInput)
+            firstVal = firstValue
+        End If
+
         Dim result As Double
 
-        Select Case currentOperator
+        Select Case operatorToUse
             Case "+"
-                result = firstValue + secondValue
+                result = firstVal + secondValue
             Case "-"
-                result = firstValue - secondValue
+                result = firstVal - secondValue
             Case "×", "*"
-                result = firstValue * secondValue
+                result = firstVal * secondValue
             Case "÷", "/"
                 If secondValue = 0 Then
                     MessageBox.Show("0で割れません")
                     Return
                 End If
-                result = firstValue / secondValue
+                result = firstVal / secondValue
             Case Else
                 ' 演算子未選択なら何もしない（または表示維持）
                 result = secondValue
@@ -80,11 +110,15 @@
         txtDisplay.Text = currentInput
 
         ' 計算式を完全な形で表示（例: 5 + 3 =）
-        Dim expression As String = $"{firstValue} {currentOperator} {secondValue} = {result}"
-        lblExpression.Text = $"{firstValue} {currentOperator} {secondValue} ="
+        Dim expression As String = $"{firstVal} {operatorToUse} {secondValue} = {result}"
+        lblExpression.Text = $"{firstVal} {operatorToUse} {secondValue} ="
 
         ' 履歴に追加（最新が上）
         lstHistory.Items.Insert(0, expression)
+
+        ' 連続計算用に保存
+        lastOperator = operatorToUse
+        lastValue = secondValue
 
         ' 連続計算
         firstValue = result
