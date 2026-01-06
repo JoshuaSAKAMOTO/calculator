@@ -42,6 +42,7 @@ Partial Class Form1
         btnSign = New Button()
         btn0 = New Button()
         btnDot = New Button()
+        lblExpression = New Label()
         SuspendLayout()
         ' 
         ' txtDisplay
@@ -67,22 +68,24 @@ Partial Class Form1
         ' 
         ' btnDiv
         ' 
+        btnDiv.Font = New Font("Yu Gothic UI", 18F)
         btnDiv.Location = New Point(96, 114)
         btnDiv.Margin = New Padding(3, 4, 3, 4)
         btnDiv.Name = "btnDiv"
         btnDiv.Size = New Size(69, 56)
         btnDiv.TabIndex = 2
-        btnDiv.Text = "/"
+        btnDiv.Text = "÷"
         btnDiv.UseVisualStyleBackColor = True
         ' 
         ' btnMul
         ' 
+        btnMul.Font = New Font("Yu Gothic UI", 18F)
         btnMul.Location = New Point(184, 114)
         btnMul.Margin = New Padding(3, 4, 3, 4)
         btnMul.Name = "btnMul"
         btnMul.Size = New Size(69, 56)
         btnMul.TabIndex = 3
-        btnMul.Text = "*"
+        btnMul.Text = "×"
         btnMul.UseVisualStyleBackColor = True
         ' 
         ' btnDelete
@@ -127,6 +130,7 @@ Partial Class Form1
         ' 
         ' btnSub
         ' 
+        btnSub.Font = New Font("Yu Gothic UI", 18F)
         btnSub.Location = New Point(269, 177)
         btnSub.Margin = New Padding(3, 4, 3, 4)
         btnSub.Name = "btnSub"
@@ -167,6 +171,7 @@ Partial Class Form1
         ' 
         ' btnAdd
         ' 
+        btnAdd.Font = New Font("Yu Gothic UI", 18F)
         btnAdd.Location = New Point(269, 240)
         btnAdd.Margin = New Padding(3, 4, 3, 4)
         btnAdd.Name = "btnAdd"
@@ -245,11 +250,20 @@ Partial Class Form1
         btnDot.Text = "."
         btnDot.UseVisualStyleBackColor = True
         ' 
+        ' lblExpression
+        ' 
+        lblExpression.Location = New Point(289, 24)
+        lblExpression.Name = "lblExpression"
+        lblExpression.Size = New Size(41, 15)
+        lblExpression.TabIndex = 20
+        lblExpression.TextAlign = ContentAlignment.MiddleRight
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(350, 604)
+        Controls.Add(lblExpression)
         Controls.Add(btnDot)
         Controls.Add(btn0)
         Controls.Add(btnSign)
@@ -298,5 +312,6 @@ Partial Class Form1
     Friend WithEvents btnSign As Button
     Friend WithEvents btn0 As Button
     Friend WithEvents btnDot As Button
+    Friend WithEvents lblExpression As Label
 
 End Class

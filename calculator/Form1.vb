@@ -22,6 +22,7 @@
         End If
 
         txtDisplay.Text = currentInput
+        UpdateExpressionDisplay(True)
     End Sub
 
     ' クリア
@@ -30,6 +31,7 @@
         firstValue = 0
         currentOperator = ""
         txtDisplay.Text = currentInput
+        lblExpression.Text = ""
     End Sub
 
     ' 演算子（＋ − × ÷）共通
@@ -43,6 +45,7 @@
 
         currentInput = "0"
         txtDisplay.Text = currentInput
+        UpdateExpressionDisplay(False)
     End Sub
 
     ' ＝
@@ -73,6 +76,36 @@
 
         ' 連続計算
         firstValue = result
+        lblExpression.Text = ""
+    End Sub
+
+    Private Sub btnDot_Click(sender As Object, e As EventArgs) Handles btnDot.Click
+        ' すでに . が含まれていたら何もしない
+        If currentInput.Contains(".") Then
+            Return
+        End If
+
+        ' 0 のときは 0. にする
+        If currentInput = "0" Then
+            currentInput = "0."
+        Else
+            currentInput &= "."
+        End If
+
+        txtDisplay.Text = currentInput
+    End Sub
+
+    Private Sub UpdateExpressionDisplay(Optional showSecond As Boolean = False)
+        If currentOperator = "" Then
+            lblExpression.Text = ""
+            Return
+        End If
+
+        If showSecond Then
+            lblExpression.Text = $"{firstValue} {currentOperator} {currentInput}"
+        Else
+            lblExpression.Text = $"{firstValue} {currentOperator}"
+        End If
     End Sub
 
 End Class
