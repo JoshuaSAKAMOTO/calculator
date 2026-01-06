@@ -6,24 +6,26 @@
     ' 計算用
     Private firstValue As Double = 0
     Private currentOperator As String = ""
+    Private isNewInput As Boolean = False
 
     ' 数字ボタン（0-9）
     Private Sub btnNumber_Click(sender As Object, e As EventArgs) Handles _
-        btn0.Click, btn1.Click, btn2.Click, btn3.Click, btn4.Click,
-        btn5.Click, btn6.Click, btn7.Click, btn8.Click, btn9.Click
+    btn0.Click, btn1.Click, btn2.Click, btn3.Click, btn4.Click,
+    btn5.Click, btn6.Click, btn7.Click, btn8.Click, btn9.Click
 
         Dim btn As Button = CType(sender, Button)
         Dim number As String = btn.Text
 
-        If currentInput = "0" Then
+        If isNewInput OrElse currentInput = "0" Then
             currentInput = number
+            isNewInput = False
         Else
             currentInput &= number
         End If
 
         txtDisplay.Text = currentInput
-        UpdateExpressionDisplay(True)
     End Sub
+
 
     ' クリア
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
@@ -36,17 +38,20 @@
 
     ' 演算子（＋ − × ÷）共通
     Private Sub btnOperator_Click(sender As Object, e As EventArgs) Handles _
-        btnAdd.Click, btnSub.Click, btnMul.Click, btnDiv.Click
+    btnAdd.Click, btnSub.Click, btnMul.Click, btnDiv.Click
 
         firstValue = Double.Parse(currentInput)
 
         Dim btn As Button = CType(sender, Button)
-        currentOperator = btn.Text   ' "+", "-", "×", "÷" のどれか
+        currentOperator = btn.Text   ' "+", "-", "*", "/"
 
-        currentInput = "0"
-        txtDisplay.Text = currentInput
-        UpdateExpressionDisplay(False)
+        ' ★ txtDisplay は変えない（0にしない）
+        UpdateExpression()
+
+        ' 次に数字を入力したら上書きしたい場合はフラグ方式が必要
+        isNewInput = True
     End Sub
+
 
     ' ＝
     Private Sub btnEqual_Click(sender As Object, e As EventArgs) Handles btnEqual.Click
@@ -77,15 +82,17 @@
         ' 連続計算
         firstValue = result
         lblExpression.Text = ""
+        isNewInput = True
     End Sub
 
     Private Sub btnDot_Click(sender As Object, e As EventArgs) Handles btnDot.Click
-        ' すでに . が含まれていたら何もしない
-        If currentInput.Contains(".") Then
-            Return
+        If isNewInput Then
+            currentInput = "0"
+            isNewInput = False
         End If
 
-        ' 0 のときは 0. にする
+        If currentInput.Contains(".") Then Return
+
         If currentInput = "0" Then
             currentInput = "0."
         Else
@@ -94,6 +101,7 @@
 
         txtDisplay.Text = currentInput
     End Sub
+
 
     Private Sub UpdateExpressionDisplay(Optional showSecond As Boolean = False)
         If currentOperator = "" Then
@@ -107,5 +115,14 @@
             lblExpression.Text = $"{firstValue} {currentOperator}"
         End If
     End Sub
+
+    Private Sub UpdateExpression()
+        If currentOperator = "" Then
+            lblExpression.Text = ""
+        Else
+            lblExpression.Text = $"{firstValue} {currentOperator}"
+        End If
+    End Sub
+
 
 End Class
