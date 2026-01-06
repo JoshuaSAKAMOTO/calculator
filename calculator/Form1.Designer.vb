@@ -249,12 +249,12 @@ Partial Class Form1
         btnDot.TabIndex = 19
         btnDot.Text = "."
         btnDot.UseVisualStyleBackColor = True
-        ' 
+        '
         ' lblExpression
-        ' 
-        lblExpression.Location = New Point(289, 24)
+        '
+        lblExpression.Location = New Point(12, 24)
         lblExpression.Name = "lblExpression"
-        lblExpression.Size = New Size(41, 15)
+        lblExpression.Size = New Size(326, 20)
         lblExpression.TabIndex = 20
         lblExpression.TextAlign = ContentAlignment.MiddleRight
         ' 

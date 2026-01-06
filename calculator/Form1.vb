@@ -79,9 +79,12 @@
         currentInput = result.ToString()
         txtDisplay.Text = currentInput
 
+        ' 計算式を完全な形で表示（例: 5 + 3 =）
+        lblExpression.Text = $"{firstValue} {currentOperator} {secondValue} ="
+
         ' 連続計算
         firstValue = result
-        lblExpression.Text = ""
+        currentOperator = ""
         isNewInput = True
     End Sub
 
@@ -124,5 +127,30 @@
         End If
     End Sub
 
+    ' 符号反転 (+/-)
+    Private Sub btnSign_Click(sender As Object, e As EventArgs) Handles btnSign.Click
+        If currentInput = "0" Then Return
+
+        If currentInput.StartsWith("-") Then
+            currentInput = currentInput.Substring(1)
+        Else
+            currentInput = "-" & currentInput
+        End If
+
+        txtDisplay.Text = currentInput
+    End Sub
+
+    ' 1文字削除 (delete)
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If isNewInput Then Return
+
+        If currentInput.Length = 1 OrElse (currentInput.Length = 2 AndAlso currentInput.StartsWith("-")) Then
+            currentInput = "0"
+        Else
+            currentInput = currentInput.Substring(0, currentInput.Length - 1)
+        End If
+
+        txtDisplay.Text = currentInput
+    End Sub
 
 End Class
