@@ -207,4 +207,29 @@
         End If
     End Sub
 
+    ' キーボード入力
+    Private Sub Form1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MyBase.KeyPress
+        Select Case e.KeyChar
+            Case "0"c : btn0.PerformClick()
+            Case "1"c : btn1.PerformClick()
+            Case "2"c : btn2.PerformClick()
+            Case "3"c : btn3.PerformClick()
+            Case "4"c : btn4.PerformClick()
+            Case "5"c : btn5.PerformClick()
+            Case "6"c : btn6.PerformClick()
+            Case "7"c : btn7.PerformClick()
+            Case "8"c : btn8.PerformClick()
+            Case "9"c : btn9.PerformClick()
+            Case "+"c : btnAdd.PerformClick()
+            Case "-"c : btnSub.PerformClick()
+            Case "*"c : btnMul.PerformClick()
+            Case "/"c : btnDiv.PerformClick()
+            Case "."c : btnDot.PerformClick()
+            Case "="c, ChrW(13) : btnEqual.PerformClick()  ' Enter
+            Case ChrW(27) : btnClear.PerformClick()        ' Escape
+            Case ChrW(8) : btnDelete.PerformClick()        ' Backspace
+            Case "c"c, "C"c : btnClear.PerformClick()
+        End Select
+    End Sub
+
 End Class

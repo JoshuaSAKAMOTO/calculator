@@ -297,6 +297,7 @@ Partial Class Form1
         Controls.Add(btnClear)
         Controls.Add(txtDisplay)
         Font = New Font("Yu Gothic UI", 10F)
+        KeyPreview = True
         Margin = New Padding(3, 4, 3, 4)
         Name = "Form1"
         Text = "Form1"
