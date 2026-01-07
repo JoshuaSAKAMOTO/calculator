@@ -12,6 +12,9 @@
     Private lastOperator As String = ""
     Private lastValue As Double = 0
 
+    ' 計算式の履歴
+    Private expressionHistory As String = ""
+
     ' 桁数制限
     Private Const MAX_DIGITS As Integer = 10
 
@@ -48,6 +51,7 @@
         currentOperator = ""
         lastOperator = ""
         lastValue = 0
+        expressionHistory = ""
         txtDisplay.Text = currentInput
         lblExpression.Text = ""
     End Sub
@@ -56,13 +60,23 @@
     Private Sub btnOperator_Click(sender As Object, e As EventArgs) Handles _
     btnAdd.Click, btnSub.Click, btnMul.Click, btnDiv.Click
 
-        firstValue = Double.Parse(currentInput)
-
         Dim btn As Button = CType(sender, Button)
+
+        ' 前の演算子があり、新しい数値が入力されている場合は先に計算
+        If currentOperator <> "" AndAlso Not isNewInput Then
+            ' 計算式の履歴に追加してから計算
+            expressionHistory &= $"{currentInput} {btn.Text} "
+            CalculateResult()
+        Else
+            ' 最初の数値と演算子を履歴に追加
+            expressionHistory = $"{currentInput} {btn.Text} "
+        End If
+
+        firstValue = Double.Parse(currentInput)
         currentOperator = btn.Text   ' "+", "-", "*", "/"
 
-        ' ★ txtDisplay は変えない（0にしない）
-        UpdateExpression()
+        ' 履歴を表示
+        lblExpression.Text = expressionHistory
 
         ' 次に数字を入力したら上書きしたい場合はフラグ方式が必要
         isNewInput = True
@@ -109,12 +123,22 @@
         currentInput = result.ToString()
         txtDisplay.Text = currentInput
 
-        ' 計算式を完全な形で表示（例: 5 + 3 =）
-        Dim expression As String = $"{firstVal} {operatorToUse} {secondValue} = {result}"
-        lblExpression.Text = $"{firstVal} {operatorToUse} {secondValue} ="
+        ' 計算式を完全な形で表示
+        Dim fullExpression As String
+        If expressionHistory <> "" Then
+            ' 連続演算の場合
+            fullExpression = expressionHistory & $"{secondValue} ="
+        Else
+            ' 通常の計算
+            fullExpression = $"{firstVal} {operatorToUse} {secondValue} ="
+        End If
+        lblExpression.Text = fullExpression
 
         ' 履歴に追加（最新が上）
-        lstHistory.Items.Insert(0, expression)
+        lstHistory.Items.Insert(0, fullExpression & $" {result}")
+
+        ' 計算式の履歴をリセット
+        expressionHistory = ""
 
         ' 連続計算用に保存
         lastOperator = operatorToUse
@@ -163,6 +187,32 @@
         Else
             lblExpression.Text = $"{firstValue} {currentOperator}"
         End If
+    End Sub
+
+    ' 計算を実行（連続演算用）
+    Private Sub CalculateResult()
+        Dim secondValue As Double = Double.Parse(currentInput)
+        Dim result As Double
+
+        Select Case currentOperator
+            Case "+"
+                result = firstValue + secondValue
+            Case "-"
+                result = firstValue - secondValue
+            Case "×", "*"
+                result = firstValue * secondValue
+            Case "÷", "/"
+                If secondValue = 0 Then
+                    MessageBox.Show("0で割れません")
+                    Return
+                End If
+                result = firstValue / secondValue
+            Case Else
+                Return
+        End Select
+
+        currentInput = result.ToString()
+        txtDisplay.Text = currentInput
     End Sub
 
     ' 符号反転 (+/-)
@@ -230,6 +280,12 @@
             Case ChrW(8) : btnDelete.PerformClick()        ' Backspace
             Case "c"c, "C"c : btnClear.PerformClick()
         End Select
+    End Sub
+
+    ' 常に最前面表示の切り替え
+    Private Sub btnTopMost_Click(sender As Object, e As EventArgs) Handles btnTopMost.Click
+        Me.TopMost = Not Me.TopMost
+        btnTopMost.Text = If(Me.TopMost, "📌", "📍")
     End Sub
 
 End Class

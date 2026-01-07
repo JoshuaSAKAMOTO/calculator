@@ -44,6 +44,7 @@ Partial Class Form1
         btnDot = New Button()
         lblExpression = New Label()
         lstHistory = New ListBox()
+        btnTopMost = New Button()
         SuspendLayout()
         ' 
         ' txtDisplay
@@ -255,9 +256,9 @@ Partial Class Form1
         ' 
         ' lblExpression
         ' 
-        lblExpression.Location = New Point(214, 24)
+        lblExpression.Location = New Point(250, 16)
         lblExpression.Name = "lblExpression"
-        lblExpression.Size = New Size(326, 20)
+        lblExpression.Size = New Size(290, 28)
         lblExpression.TabIndex = 20
         lblExpression.TextAlign = ContentAlignment.MiddleRight
         ' 
@@ -269,11 +270,21 @@ Partial Class Form1
         lstHistory.Size = New Size(179, 412)
         lstHistory.TabIndex = 21
         ' 
+        ' btnTopMost
+        ' 
+        btnTopMost.Location = New Point(214, 14)
+        btnTopMost.Name = "btnTopMost"
+        btnTopMost.Size = New Size(30, 30)
+        btnTopMost.TabIndex = 22
+        btnTopMost.Text = "📍"
+        btnTopMost.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(564, 446)
+        Controls.Add(btnTopMost)
         Controls.Add(lstHistory)
         Controls.Add(lblExpression)
         Controls.Add(btnDot)
@@ -327,5 +338,6 @@ Partial Class Form1
     Friend WithEvents btnDot As Button
     Friend WithEvents lblExpression As Label
     Friend WithEvents lstHistory As ListBox
+    Friend WithEvents btnTopMost As Button
 
 End Class
