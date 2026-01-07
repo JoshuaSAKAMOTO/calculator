@@ -18,6 +18,9 @@
     ' 桁数制限
     Private Const MAX_DIGITS As Integer = 10
 
+    ' ダークモード
+    Private isDarkMode As Boolean = False
+
     ' 桁数をカウント（小数点・マイナス符号を除く）
     Private Function GetDigitCount(input As String) As Integer
         Return input.Replace("-", "").Replace(".", "").Length
@@ -286,6 +289,86 @@
     Private Sub btnTopMost_Click(sender As Object, e As EventArgs) Handles btnTopMost.Click
         Me.TopMost = Not Me.TopMost
         btnTopMost.Text = If(Me.TopMost, "📌", "📍")
+    End Sub
+
+    ' ダークモードの切り替え
+    Private Sub btnDarkMode_Click(sender As Object, e As EventArgs) Handles btnDarkMode.Click
+        isDarkMode = Not isDarkMode
+        ApplyTheme()
+    End Sub
+
+    ' テーマを適用
+    Private Sub ApplyTheme()
+        Dim backColor As Color
+        Dim foreColor As Color
+        Dim buttonBackColor As Color
+        Dim displayBackColor As Color
+
+        If isDarkMode Then
+            backColor = Color.FromArgb(30, 30, 30)
+            foreColor = Color.FromArgb(180, 180, 180)  ' グレー
+            buttonBackColor = Color.FromArgb(40, 40, 40)
+            displayBackColor = Color.FromArgb(35, 35, 35)
+            btnDarkMode.Text = "☀"
+        Else
+            backColor = SystemColors.Control
+            foreColor = SystemColors.ControlText
+            buttonBackColor = SystemColors.Control
+            displayBackColor = SystemColors.Window
+            btnDarkMode.Text = "🌙"
+        End If
+
+        ' フォーム
+        Me.BackColor = backColor
+
+        ' 表示エリア
+        txtDisplay.BackColor = displayBackColor
+        txtDisplay.ForeColor = foreColor
+        If isDarkMode Then
+            txtDisplay.BorderStyle = BorderStyle.FixedSingle
+        Else
+            txtDisplay.BorderStyle = BorderStyle.Fixed3D
+        End If
+
+        ' 計算式ラベル
+        lblExpression.ForeColor = foreColor
+
+        ' 履歴リスト
+        lstHistory.BackColor = displayBackColor
+        lstHistory.ForeColor = foreColor
+        If isDarkMode Then
+            lstHistory.BorderStyle = BorderStyle.FixedSingle
+        Else
+            lstHistory.BorderStyle = BorderStyle.Fixed3D
+        End If
+
+        ' 全ボタン
+        For Each ctrl As Control In Me.Controls
+            If TypeOf ctrl Is Button Then
+                Dim btn As Button = CType(ctrl, Button)
+                btn.BackColor = buttonBackColor
+                btn.ForeColor = foreColor
+                If isDarkMode Then
+                    btn.FlatStyle = FlatStyle.Flat
+                    btn.FlatAppearance.BorderColor = Color.FromArgb(60, 60, 60)
+                    btn.FlatAppearance.BorderSize = 1
+                Else
+                    btn.FlatStyle = FlatStyle.Standard
+                End If
+            End If
+        Next
+    End Sub
+
+    ' クリップボードにコピー
+    Private Async Sub btnCopy_Click(sender As Object, e As EventArgs) Handles btnCopy.Click
+        If String.IsNullOrEmpty(txtDisplay.Text) Then Return
+
+        Clipboard.SetText(txtDisplay.Text)
+
+        ' フィードバック表示
+        btnCopy.Text = "✓"
+        Await Task.Delay(500)
+        btnCopy.Text = "📋"
     End Sub
 
 End Class

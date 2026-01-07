@@ -45,6 +45,8 @@ Partial Class Form1
         lblExpression = New Label()
         lstHistory = New ListBox()
         btnTopMost = New Button()
+        btnDarkMode = New Button()
+        btnCopy = New Button()
         SuspendLayout()
         ' 
         ' txtDisplay
@@ -256,9 +258,9 @@ Partial Class Form1
         ' 
         ' lblExpression
         ' 
-        lblExpression.Location = New Point(250, 16)
+        lblExpression.Location = New Point(322, 16)
         lblExpression.Name = "lblExpression"
-        lblExpression.Size = New Size(290, 28)
+        lblExpression.Size = New Size(218, 28)
         lblExpression.TabIndex = 20
         lblExpression.TextAlign = ContentAlignment.MiddleRight
         ' 
@@ -279,11 +281,31 @@ Partial Class Form1
         btnTopMost.Text = "📍"
         btnTopMost.UseVisualStyleBackColor = True
         ' 
+        ' btnDarkMode
+        ' 
+        btnDarkMode.Location = New Point(250, 14)
+        btnDarkMode.Name = "btnDarkMode"
+        btnDarkMode.Size = New Size(30, 30)
+        btnDarkMode.TabIndex = 23
+        btnDarkMode.Text = "🌙"
+        btnDarkMode.UseVisualStyleBackColor = True
+        ' 
+        ' btnCopy
+        ' 
+        btnCopy.Location = New Point(286, 14)
+        btnCopy.Name = "btnCopy"
+        btnCopy.Size = New Size(30, 30)
+        btnCopy.TabIndex = 24
+        btnCopy.Text = "📋"
+        btnCopy.UseVisualStyleBackColor = True
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 17F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(564, 446)
+        Controls.Add(btnCopy)
+        Controls.Add(btnDarkMode)
         Controls.Add(btnTopMost)
         Controls.Add(lstHistory)
         Controls.Add(lblExpression)
@@ -339,5 +361,7 @@ Partial Class Form1
     Friend WithEvents lblExpression As Label
     Friend WithEvents lstHistory As ListBox
     Friend WithEvents btnTopMost As Button
+    Friend WithEvents btnDarkMode As Button
+    Friend WithEvents btnCopy As Button
 
 End Class
